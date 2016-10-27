@@ -17,10 +17,12 @@ build:
 
 requirements:
   build:
-    - gcc
+    - gcc  # [not osx]
+    - llvm  # [osx]
     - pkgconfig
     - zlib
   run:
+    - libgcc # [not osx]
     - zlib
 
 test:
