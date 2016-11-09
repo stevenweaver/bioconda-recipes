@@ -1,43 +1,48 @@
 {% set name = "OpenMS" %}
-{% set version = "2.0.1" %}
+{% set version = "2.1.0" %}
 package:
   name: {{ name|lower  }}
   version: {{ version  }}
 
 source:
-  fn: OpenMS-2.0.1-src-contrib-docu.tar.gz
-  url: https://github.com/OpenMS/OpenMS/releases/download/Release{{ version  }}/{{ name }}-{{ version  }}-src-contrib-docu.tar.gz
+  fn: OpenMS-{{ version }}-src-contrib-docu.zip
+  url: https://github.com/OpenMS/OpenMS/releases/download/Release{{ version }}/OpenMS-{{ version }}-src-contrib-docu.zip
 
 build:
     number: 0
+    skip: True  # [osx]
 
 requirements:
   build:
     - gcc    # [linux]
     - llvm   # [osx]
     - cmake
-    - wget
     - autoconf
     - automake
-    - libtool
     - python
     - zlib
-    - icu
+    - libtool
     - xerces-c
     - gsl
-    - boost <1.60.0
+    - boost  >=1.62.0
     - eigen
-    - glpk
+    - glpk  >=4.60
     - bzip2
     - qt
   run:
     - python
-    ##- zlib
-    ##- boost <1.60.0
+    - zlib
+    - xerces-c
+    - gsl
+    - boost  >=1.62.0
+    - eigen
+    - glpk  >=4.60
+    - bzip2
+    - qt
 
 test:
   commands:
-    - FileMerger
+    - FileMerger --help
 
 about:
   home: https://github.com/OpenMS/OpenMS
