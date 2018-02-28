@@ -19,7 +19,7 @@ requirements:
 
 test:
   commands:
-    - tn93 -h 2>&1 | grep 'compute Tamura Nei 93 distances between aligned sequences' > /dev/null
+    - tn93 -v
 
 about:
   home: https://github.com/veg/tn93
